@@ -1,0 +1,48 @@
+.inputPrice {
+  padding-left: 10px;
+}
+.fontWeight {
+  font-weight: 100;
+}
+.fontWeight input {
+  accent-color: black;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.labelSpan {
+  margin-left: 10px;
+}
+.containerPriceFilter {
+  display: flex;
+
+  align-items: center;
+  width: 100%;
+  max-width: 100px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 40px;
+}
+.containerSearchBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  background-color: white;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.containerSearchBar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+}
