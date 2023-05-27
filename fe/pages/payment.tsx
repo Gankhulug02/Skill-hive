@@ -16,11 +16,6 @@ const Payment = () => {
     );
     setQRCodeImage(response.data.qr);
   };
-
-  // useEffect(() => {
-  //   qrGenerate();
-  // }, []);
-
   return (
     <Box
       onClick={() => console.log(qrCodeImage)}

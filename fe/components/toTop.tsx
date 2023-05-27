@@ -37,6 +37,7 @@ const ToTopBtn = () => {
         backgroundColor: "white",
         boxShadow: "0px 0px 10px rgb(2,2,2,0.2)",
         borderRadius: "10px",
+        zIndex: "2",
       }}
     >
       <KeyboardArrowUpRoundedIcon sx={{ width: "100%", height: "100%" }} />

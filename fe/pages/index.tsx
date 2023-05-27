@@ -1,7 +1,5 @@
 import Freelancers from "@/components/freelancers";
 import PopularCat from "@/components/popularCat";
-import CommendPart from "@/components/commendPart";
-import Hero from "@/components/hero section/hero";
 import Offers from "@/components/offers";
 
 import { BASE_URL } from "@/variables";
@@ -9,9 +7,7 @@ import { BASE_URL } from "@/variables";
 export default function Home({ data, dataServices }: any) {
   return (
     <>
-      <Hero />
       <PopularCat />
-      <CommendPart />
       <Freelancers data={data.freelancer} />
       <Offers data={dataServices.service} />
     </>

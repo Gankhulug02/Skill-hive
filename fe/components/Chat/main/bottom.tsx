@@ -41,7 +41,7 @@ const Bottom = () => {
             type="search"
             className="h-full w-full bg-transparent focus:outline-none placeholder-gray-400"
             placeholder="Type a message"
-          ></input>
+          />
         </Box>
         <Box
           sx={{
