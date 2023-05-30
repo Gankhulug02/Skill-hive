@@ -51,7 +51,7 @@ const FreelancerCard = ({ data }: any) => {
             <Image
               width={400}
               height={400}
-              src={data.freelancer.avatar}
+              src={data.freelancer?.avatar}
               alt={data.name}
               className="w-full h-full object-cover "
             />
@@ -91,7 +91,7 @@ const FreelancerCard = ({ data }: any) => {
               Projects
             </Typography>
             <Typography>
-              {data.freelancer.worked_projects.length + 1}
+              {data.freelancer?.worked_projects.length + 1}
             </Typography>
           </Box>
           <Box
@@ -105,7 +105,7 @@ const FreelancerCard = ({ data }: any) => {
             <Typography sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}>
               Rating
             </Typography>
-            <Typography>{data.freelancer.rating}</Typography>
+            <Typography>{data.freelancer?.rating}</Typography>
           </Box>
           <Box
             sx={{
@@ -118,7 +118,7 @@ const FreelancerCard = ({ data }: any) => {
             <Typography sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}>
               Per Hour
             </Typography>
-            <Typography>{data.freelancer.hourly_rate}</Typography>
+            <Typography>{data.freelancer?.hourly_rate}</Typography>
           </Box>
         </Box>
         <Box
@@ -161,7 +161,7 @@ const FreelancerCard = ({ data }: any) => {
                 overflow: "scroll",
               }}
             >
-              {data.freelancer.skills.map((el: any, index: any) => (
+              {data.freelancer?.skills.map((el: any, index: any) => (
                 <Typography
                   key={index}
                   sx={{

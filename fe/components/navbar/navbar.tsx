@@ -11,6 +11,7 @@ const Navbar = () => {
         width: "100%",
         minHeight: "80px",
         borderBottom: "1px solid rgba(200, 200,200)",
+        backgroundColor: "white",
         py: 2,
       }}
     >

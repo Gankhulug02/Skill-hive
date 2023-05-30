@@ -57,7 +57,7 @@ export default function Freelancers({ data }: any) {
               fontWeight: "500",
             }}
           >
-            Expert Bees
+            Expert Freelancers
           </Typography>
           <Typography sx={{ fontSize: "20px", color: "grey" }}>
             Search and contact bees directly with no oblication

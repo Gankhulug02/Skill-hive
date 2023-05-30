@@ -10,7 +10,6 @@ import "swiper/css/pagination";
 
 // import "./styles.css";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import CatCard from "./cards/catCard";
 
 const PopularCat = (): any => {
@@ -82,6 +81,7 @@ const PopularCat = (): any => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        backgroundColor: "white",
         justifyContent: "space-between",
         gap: "10px",
         width: { xs: "95%", xl: "75%" },

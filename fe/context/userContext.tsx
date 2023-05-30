@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -7,26 +7,38 @@ export const UserContext = createContext({});
 
 const UserProvider = ({ children }: any) => {
   const router = useRouter();
-  const [userData, setUserData] = useState<{}>();
-  const [signUpData, setSignUpData] = useState({
-    name: "",
+  const [userData, setUserData] = useState<any>(null);
+  const [isLogged, setIsLogged] = useState<any>(false);
+
+  const [signUpData, setSignUpData] = useState<any>({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-    role: "",
+    role: "freelancer",
+  });
+  const [logInData, setLoginData] = useState<any>({
+    email: "",
+    password: "",
   });
 
-  const [signInData, setSignInData] = React.useState({
-    email: "",
-    password: "",
-  });
+  const handleSignUpData = (e: any) => {
+    setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+  };
+
+  const handleLogInData = (e: any) => {
+    setLoginData({ ...logInData, [e.target.name]: e.target.value });
+  };
+
+  const handleError = ({ err }: any) => {
+    console.log(err);
+  };
 
   const whatRole = (e: any) => {
     setSignUpData({ ...signUpData, role: e });
   };
 
   const editUser = async ({ editData }: any) => {
-    console.log("editUser", editData);
-    // event.preventDefault();
     try {
       const res = await axios.put(
         `${BASE_URL}/freelancer/${editData._id}`,
@@ -34,32 +46,45 @@ const UserProvider = ({ children }: any) => {
       );
       console.log(res);
     } catch (err) {
-      console.log("err", err);
+      handleError({ err });
     }
   };
 
-  const signUp = async (event: any) => {
-    event.preventDefault();
+  const signUp = async () => {
     try {
       const res = await axios.post(`${BASE_URL}/auth/register`, signUpData);
+      setLoginData({ email: signUpData.email });
+      // alert("succesfully signed up");
+      router.push("/auth#login");
       console.log(res);
-    } catch (err) {
-      console.log("err", err);
+    } catch (err: any) {
+      handleError({ err });
     }
   };
 
-  const signIn = async (event: any) => {
-    event.preventDefault();
+  const logIn = async () => {
     try {
-      const res = await axios.post(`${BASE_URL}/auth/login`, signInData);
-
+      const res = await axios.post(`${BASE_URL}/auth/login`, logInData);
+      setUserData(res.data.user);
+      setIsLogged(true);
+      localStorage.setItem("isLogged", "true");
+      localStorage.setItem("userData", JSON.stringify(res.data.user));
+      // alert("successfully logged in");
       console.log(res);
       router.push("/");
-      // window.location.href = "/";
     } catch (err) {
-      console.log("err", err);
+      handleError({ err });
     }
   };
+
+  useEffect(() => {
+    const userDataString = localStorage.getItem("userData");
+    if (userDataString) {
+      const userDataObj = JSON.parse(userDataString);
+      setUserData(userDataObj);
+    }
+    setIsLogged(localStorage.getItem("isLogged"));
+  }, []);
 
   return (
     <UserContext.Provider
@@ -67,11 +92,17 @@ const UserProvider = ({ children }: any) => {
         signUpData,
         setSignUpData,
         signUp,
-        signIn,
+        logIn,
         whatRole,
-        signInData,
-        setSignInData,
+        logInData,
+        setLoginData,
         editUser,
+        handleLogInData,
+        handleSignUpData,
+        userData,
+        setUserData,
+        isLogged,
+        setIsLogged,
       }}
     >
       {children}

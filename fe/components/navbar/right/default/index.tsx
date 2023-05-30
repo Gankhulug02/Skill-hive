@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRouter } from "next/router";
+import Auth from "./auth";
+import Profile from "./profile";
+import { UserContext } from "@/context/userContext";
 
 const Default = () => {
-  const router = useRouter();
+  const { isLogged, setIsLogged }: any = useContext(UserContext);
+
   return (
     <Box
       sx={{
@@ -20,6 +24,7 @@ const Default = () => {
     >
       {/* post offer button start */}
       <Button
+        onClick={() => console.log(isLogged)}
         sx={{
           minWidth: "120px",
           color: "white",
@@ -31,34 +36,7 @@ const Default = () => {
         Post Offer
       </Button>
       {/* post offer button end */}
-      {/* To Auth start */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "20px",
-          button: {
-            color: "black",
-            textTransform: "capitalize",
-          },
-        }}
-      >
-        <Button
-          onClick={() => {
-            router.push("/auth#login");
-          }}
-        >
-          Log in
-        </Button>
-        <Button
-          onClick={() => {
-            router.push("/auth#signup");
-          }}
-        >
-          Sign up
-        </Button>
-      </Box>
-      {/*To Auth end */}
+      {isLogged ? <Profile /> : <Auth />}
     </Box>
   );
 };

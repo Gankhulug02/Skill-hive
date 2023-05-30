@@ -13,9 +13,7 @@ interface IUser {
 const userSchema = new Schema(
   {
     name: {
-      type: String,
-      unique: true,
-      required: [true, "Хэрэглэгчийн нэрийг заавал бөглөнө үү!!!"],
+      type: [String, String],
     },
     email: {
       type: String,

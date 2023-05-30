@@ -1,9 +1,11 @@
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
-const ProfileSettings = ({ isEditProfile, toggleModal }: any) => {
+const ProfileSettings = ({ isEditProfile, toggleModal, id }: any) => {
+  const router = useRouter();
   return (
     <Box
       sx={{
@@ -18,7 +20,7 @@ const ProfileSettings = ({ isEditProfile, toggleModal }: any) => {
     >
       <Button
         onClick={() => {
-          toggleModal("EditProfile");
+          router.push(`/freelancerForm/${id}`);
         }}
         sx={{ border: "1px solid black", width: "max-content" }}
       >

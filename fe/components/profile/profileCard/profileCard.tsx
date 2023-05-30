@@ -168,6 +168,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           >
             <Box sx={{ position: "absolute", right: "100%" }}>
               <ProfileSettings
+                id={profileData?._id}
                 toggleModal={toggleModal}
                 isEditProfile={isSettings}
                 SetIsEditProfile={setIsSettings}
@@ -191,7 +192,10 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
             }}
           >
             <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
-              {profileData?.name}
+              {profileData?.name[0]}
+            </Typography>
+            <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
+              {profileData?.name[1]}
             </Typography>
             {toggleLike ? (
               <FavoriteIcon

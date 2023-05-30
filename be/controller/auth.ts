@@ -24,7 +24,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     );
 
     if (!checkPass) {
-      res.status(200).json({ message: `email or password incorrect` });
+      res.status(400).json({ message: `email or password incorrect` });
     }
 
     const { _id, name, email, role }: any = user;
@@ -39,19 +39,20 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 
     res.status(200).json({ message: `Амжилттай нэвтэрлээ`, user, token });
   } catch (error) {
+    console.log(error);
     next();
   }
 };
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
-  const { name, email, password, role } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
   console.log(req.body);
 
   try {
     const hashedPassword = bcrypt.hashSync(password, 10);
     const user = await User.create({
-      name,
       email,
+      name: [firstName, lastName],
       role,
       password: hashedPassword,
     });

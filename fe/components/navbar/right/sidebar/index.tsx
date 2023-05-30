@@ -4,7 +4,7 @@ import { Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
 
 const Sidebar = () => {
-  const [isSidebar, setIsSidbar] = useState<boolean>(true);
+  const [isSidebar, setIsSidbar] = useState<boolean>(false);
   const router = useRouter();
   return (
     <>

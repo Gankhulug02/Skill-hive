@@ -17,7 +17,14 @@ const Left = () => {
     >
       <Box
         onClick={() => router.push("/")}
-        sx={{ maxWidth: "250px", minWidth: "100px", height: "100%" }}
+        sx={{
+          maxWidth: "250px",
+          minWidth: "100px",
+          height: "100%",
+          ":hover": {
+            cursor: "pointer",
+          },
+        }}
       >
         <Image
           src="/logo-no-back.svg"
