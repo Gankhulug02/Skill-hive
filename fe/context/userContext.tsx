@@ -83,7 +83,6 @@ const UserProvider = ({ children }: any) => {
       const userDataObj = JSON.parse(userDataString);
       setUserData(userDataObj);
     }
-    setIsLogged(localStorage.getItem("isLogged"));
   }, []);
 
   return (

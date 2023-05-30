@@ -22,7 +22,10 @@ const Profile = () => {
     } else if (e === "Dashboard") {
       router.push(`/admin`);
       console.log(userData);
-    } else if (`/Logout`) {
+    } else if (e === `Logout`) {
+      localStorage.setItem("userId", "null");
+      localStorage.setItem("userData", "null");
+      localStorage.setItem("isLogged", "false");
       setIsLogged(false);
       setUserData(null);
     }
@@ -48,7 +51,7 @@ const Profile = () => {
           alt=""
           width={50}
           height={50}
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </Box>
       {/* profile menu start*/}
