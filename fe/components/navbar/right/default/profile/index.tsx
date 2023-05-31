@@ -70,8 +70,9 @@ const Profile = () => {
           boxShadow: "0px 2px 5px 0px rgba(158,158,158,0.5)",
         }}
       >
-        {buttonData.map((e: any) => (
+        {buttonData.map((e: any, index) => (
           <Button
+            key={index}
             onClick={() => menuRoute(e)}
             sx={{
               width: "100%!important",
