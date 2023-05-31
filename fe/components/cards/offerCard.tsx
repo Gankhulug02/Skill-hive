@@ -59,7 +59,9 @@ const OfferCard = ({ data }: any) => {
           }}
           className="title"
         >
-          {data?.title.substring(0, 45) + "..."}
+          {data?.title.length >= 45
+            ? data?.title.substring(0, 45) + "..."
+            : data?.title}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <Box

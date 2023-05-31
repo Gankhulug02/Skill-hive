@@ -7,7 +7,6 @@ import SignUp from "@/components/forAuthPage/signUp";
 import { useRouter } from "next/router";
 
 export default function App() {
-  const { whatRole, signUpData }: any = useContext(UserContext);
   const [toggleBoolean, setToggleBoolean] = useState<any>(true);
   const inputStyle = {
     boxShadow: "none",
@@ -17,8 +16,8 @@ export default function App() {
     px: 1,
   };
   const router = useRouter();
-
   const fragment = router.asPath.split("#")[1];
+
   useEffect(() => {
     if (fragment === "login") {
       setToggleBoolean(true);

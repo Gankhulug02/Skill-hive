@@ -25,6 +25,7 @@ const Offers = ({ offerData }: any) => {
         <Box
           sx={{
             display: "flex",
+            flexWrap: "wrap",
             gap: "20px",
             width: "100%",
             height: "100%",

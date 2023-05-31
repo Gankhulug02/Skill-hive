@@ -25,7 +25,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
     setPopOverText("Copy Profile");
     setAnchorEl(event.currentTarget);
   };
-
+  console.log("profile Data", profileData);
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
@@ -191,11 +191,14 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
               alignItems: "center",
             }}
           >
-            <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
-              {profileData?.name[0]}
+            {/* <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
+              {profileData?.name?.[0]}
             </Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
-              {profileData?.name[1]}
+              {profileData?.name?.[1]}
+            </Typography> */}
+            <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
+              {profileData?.name}
             </Typography>
             {toggleLike ? (
               <FavoriteIcon

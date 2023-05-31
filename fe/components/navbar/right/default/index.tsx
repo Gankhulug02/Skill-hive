@@ -7,12 +7,13 @@ import Profile from "./profile";
 import { UserContext } from "@/context/userContext";
 
 const Default = () => {
-  const { isLogged, setIsLogged }: any = useContext(UserContext);
-
+  const { isLogged }: any = useContext(UserContext);
+  const router = useRouter();
   return (
     <Box
       sx={{
         display: "flex",
+        alignItems: "center",
         justifyContent: "end",
         gap: "40px",
         width: "100%",
@@ -24,9 +25,10 @@ const Default = () => {
     >
       {/* post offer button start */}
       <Button
-        onClick={() => console.log(isLogged)}
+        onClick={() => router.push("/postOffer")}
         sx={{
           minWidth: "120px",
+          maxHeight: "40px",
           color: "white",
           px: 2,
           background:

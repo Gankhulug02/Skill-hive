@@ -7,6 +7,13 @@ import { useRouter } from "next/router";
 const Login = ({ inputStyle }: any) => {
   const { logIn, logInData, handleLogInData }: any = useContext(UserContext);
   const router = useRouter();
+  const checkLoginData = () => {
+    if (!logInData.email || !logInData.password) {
+      alert("fillin all field");
+    } else {
+      logIn();
+    }
+  };
   return (
     <Box
       sx={{
@@ -91,7 +98,7 @@ const Login = ({ inputStyle }: any) => {
         </Box>
         {/* info inputs end */}
         <Button
-          onClick={() => logIn()}
+          onClick={() => checkLoginData()}
           sx={{
             background: mainColor,
             width: "100%",

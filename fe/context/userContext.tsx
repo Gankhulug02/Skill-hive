@@ -7,7 +7,7 @@ export const UserContext = createContext({});
 
 const UserProvider = ({ children }: any) => {
   const router = useRouter();
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<any>("");
   const [isLogged, setIsLogged] = useState<any>(false);
 
   const [signUpData, setSignUpData] = useState<any>({
@@ -68,6 +68,7 @@ const UserProvider = ({ children }: any) => {
       setUserData(res.data.user);
       setIsLogged(true);
       localStorage.setItem("isLogged", "true");
+      localStorage.setItem("userId", res.data.user._id);
       localStorage.setItem("userData", JSON.stringify(res.data.user));
       // alert("successfully logged in");
       console.log(res);
@@ -82,6 +83,11 @@ const UserProvider = ({ children }: any) => {
     if (userDataString) {
       const userDataObj = JSON.parse(userDataString);
       setUserData(userDataObj);
+    }
+    if (localStorage.getItem("isLogged") === "false") {
+      setIsLogged(false);
+    } else if (localStorage.getItem("isLogged") === "true") {
+      setIsLogged(true);
     }
   }, []);
 
