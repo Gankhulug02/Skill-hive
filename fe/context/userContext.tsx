@@ -64,10 +64,7 @@ const UserProvider = ({ children }: any) => {
 
   const logIn = async () => {
     try {
-      const res = await axios.post(
-        `https://skill-hive.onrender.com/auth/login`,
-        logInData
-      );
+      const res = await axios.post(`${BASE_URL}/auth/login`, logInData);
       setUserData(res.data.user);
       setIsLogged(true);
       localStorage.setItem("isLogged", "true");
