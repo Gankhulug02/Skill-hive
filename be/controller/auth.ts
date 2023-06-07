@@ -6,6 +6,9 @@ import jwt from "jsonwebtoken";
 import sendEmail from "../utils/sendEmail";
 import generateCode from "../utils/confirmation";
 
+const test = async (req: Request, res: Response, next: NextFunction) => {
+  res.send("Hello API Sent Email");
+};
 const login = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
   try {
@@ -75,4 +78,4 @@ const authMail = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { register, login, authMail };
+export { register, login, authMail, test };
