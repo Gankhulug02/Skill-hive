@@ -18,8 +18,8 @@ const UserProvider = ({ children }: any) => {
     role: "freelancer",
   });
   const [logInData, setLoginData] = useState<any>({
-    email: "",
-    password: "",
+    email: "test@gmail.com",
+    password: "Pass123",
   });
 
   const handleSignUpData = (e: any) => {
