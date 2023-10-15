@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
+import * as cron from "node-cron";
+
 dotenv.config();
 import error from "./middlewares/error";
 import userRoutes from "./routes/user";
@@ -67,6 +69,26 @@ app.use("/freelancer", freelancerRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello skill hive be");
+});
+
+const fetchData = async () => {
+  try {
+    const fetchModule = await import("node-fetch");
+    const fetch = fetchModule.default;
+    const response = await fetch("https://skill-hive-my.onrender.com/");
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+    const data = await response.text();
+    console.log("Data fetched successfully:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
+// Schedule the fetch request to run every 30 minutes
+cron.schedule("*/30 * * * *", () => {
+  fetchData();
 });
 
 app.use(error);
